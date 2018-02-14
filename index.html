@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://dacian.tk/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://dacian.tk"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-iOS代码编码规范" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/14/iOS代码编码规范/" class="article-date">
+  <time datetime="2018-02-14T12:42:42.000Z" itemprop="datePublished">2018-02-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/02/14/iOS代码编码规范/">iOS代码编码规范</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>author： <a href="https://my.oschina.net/u/2490521" target="_blank" rel="noopener">@agony</a></p>
+<p>date： 2016.4.3</p>
+<p>link： <a href="http://my.oschina.net/agony/blog/652034" target="_blank" rel="noopener">原文地址</a></p>
+<hr>
+<h1 id="iOS代码编码规范"><a href="#iOS代码编码规范" class="headerlink" title="iOS代码编码规范"></a>iOS代码编码规范</h1><h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><ul>
+<li>所负责文件头最少要保证出现标识自己身份的用户名。</li>
+<li>头文件要加上描述主要完成的功能。</li>
+<li>头文件中每一个方法加上较详细的注释说明，功能，输入输出含义。</li>
+<li>每次对文件的大改最好标记一个版本号。</li>
+<li>如果希望尽量少在方法内出现注释，那么命名应该是自注释的。关于命名在命名规范中描述。</li>
+<li>注释应当保证和所注释代码相近。代码块注释放在每一个独立代码块之前，变量注释放在变量后面，宏注释放在宏的上方。</li>
+<li>另外禁止在语句中间插入注释,如:<code>if(a &gt; b /* + c */ + d)</code>。</li>
+<li>修改代码过程中应保证修改注释，删除代码应保证注释一并移除。对于之前项目中遗留下来模糊的注释应予以清除。</li>
+<li>对于比较模糊、复杂的思路都应当加上功能说明性文字。</li>
+</ul>
+<h2 id="风格"><a href="#风格" class="headerlink" title="风格"></a>风格</h2><ul>
+<li>程序块应当采用缩进风格编写，缩进为一个Tab。<blockquote>
+<p>Xcode提供代码格式化功能，<br>选中代码块(如CMD+A全选)，<br>使用快捷键CTRL+I。</p>
+</blockquote>
+</li>
+<li>方法行数不宜超过20行，最多不能超过80行。</li>
+<li>遇到较长方法如循环分支内代码较多的，单独抽取出方法。</li>
+<li>出现两个以上常变量的操作时，操作符前后应加上空白符，如<code>i &lt; 2</code>。</li>
+<li>每个方法或者功能块之间为了结构清晰，应当有且只有一行空格。</li>
+<li>在viewDidload中addSubview的事情，viewWilllayoutSubview或者didLayoutSubview里面做布局，最后在viewDidAppear里面做Notification的监听，在viewWillDisappear中做清理。至于属性的初始化，则交给对应的getter。</li>
+<li><p>相对独立的程序块之间、变量说明之后必须加空行：</p>
+<pre><code>if(foo) {
+    // program code    
+}    
+bar = foo;    
+
+//应如下书写   
+if(foo) {
+    // program code
+}    
+
+bar = foo;
+</code></pre></li>
+<li>一行有且最多一个语句;碰到语句较长的应折行：<blockquote>
+<p>如果方法<strong>参数过长</strong>的，每个参数做一行；<br>如果是方法<strong>表达式</strong>过长，在<em>低优先级</em>表达式处折行，表达式放在<strong>行首</strong>。</p>
+</blockquote>
+</li>
+<li><p>所有代码块类语句(if、for、switch、case等)必须用大括号包围起来,并且在大括号结束时加上响应结束注释：</p>
+<pre><code>for&lt;(int i = 0 ; i &lt; 2; i++){
+    i++;
+ }    //end of for(int i = 0 ; i &lt; 2; i++)
+</code></pre></li>
+</ul>
+<h2 id="命名"><a href="#命名" class="headerlink" title="命名"></a>命名</h2><ul>
+<li>推荐依据SDK的习惯命名，尤其是自定义数据结构。</li>
+<li>标识符命名使用驼峰命名法。属性、方法级别使用小驼峰法，类、协议、枚举级别元素使用大驼峰法。&gt; 驼峰法分小驼峰法和大驼峰法。小驼峰法：除第一个单词之外，其他单词首字母大写。大驼峰法相比小驼峰法，大驼峰法把第一个单词的首字母也大写了。</li>
+<li>标识符应当采取完整的英文命名，禁止采取拼音，非ASCII字符及无法揣测含义的缩写。不推荐英文缩写，但对于常见单词如to、for约定俗成可以简写为2、4。</li>
+<li>不应当在命名中加上一些无意义的数字，如<code>First</code>、<code>Fst</code>、<code>Foo2</code>。</li>
+<li>宏命名以小写k开头，其后使用驼峰命名法:<code>kFontSize</code>。</li>
+<li>标识符命名避免包含关键字。</li>
+<li>表达式中多使用小括号分辨层级。</li>
+<li>避免局部变量与公共变量重名。</li>
+<li>工程文件命名统一使用工程缩写作为前缀。</li>
+<li>实例属性以_XXX格式命名。</li>
+</ul>
+<h2 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h2><ul>
+<li>除非修复必要的bug，不要修改第三方库内容。</li>
+<li>每一个变量或常量都应该有一个非nil/null的初始值。</li>
+<li>一个属性应当对外最多只开放一个修改接口。</li>
+<li>尽量解决警告。</li>
+<li>合理设计变量基本数据类型，编码非同类型数据强制转换。</li>
+<li>为每一个功能性的代码块抽取出一个方法是一个不错的做法，当然最好配上自注释的命名。</li>
+<li>避免使用递归，理论上所有递归都可以转换为for循环。</li>
+<li>方法功能应该单一，一个模块只做一件事情(或返回一个结果)。</li>
+<li>避免使用公共变量，尽量使用局部变量解除结构模块间的耦合性。</li>
+<li>对于使用循环能放在循环体外的语句就放在循环体外部。</li>
+<li>不要使用太多循环和if等语句嵌套。</li>
+<li>退出自己的模块时一定要做清理工作，比如通知，定时器，网络调用，数据库关闭。</li>
+<li>使用<code>#pragma mark - Mark Name</code>对方法进行分组。</li>
+<li>无用的注释代码在至多一次代码管理工具提交后予以删除。如果确定只是暂时注释代码依然有用请使用<code>#if 0</code>，<code>#endif</code>编译器语法注释并加上注释备注。</li>
+<li>封装模块应当方便他人调用，最良好的体验是一行代码搞定调用。</li>
+<li>禁止随意更改代码接口，但不限制新增接口。对于接口确实要改变的，应当讨论确定可行后行动。</li>
+<li>对于字面量类型的常量都应当抽取出来放在配置文件内，如通知名，网络接口。</li>
+<li>配置文件统一放置在对应的目录文件内。</li>
+<li>禁止不经协商随意更改配置。</li>
+<li>复杂的宏定义一定要注意括号嵌套。</li>
+<li>不要重复定义相同语义、功能的宏。</li>
+<li>过多的使用宏会导致编译缓慢，推荐使用全局常量。</li>
+<li>禁止拷贝代码块。</li>
+<li>不要有多余大片空白行。</li>
+<li>文件按模块及功能放置。</li>
+<li>按照工程中统一的风格编写代码，不要标新立异。</li>
+<li>推荐在getter中初始化属性。</li>
+<li><p>根据Apple官方推荐，语句后紧随左大括号:</p>
+<pre><code>while(){
+    // do somenthing
+}
+</code></pre></li>
+</ul>
+<h2 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h2><ul>
+<li>避免使用NSLog输出大量无意义变量值。如果只是查看某一变量某一情况下状态，请尽量使用断点或控制台调试;或者调试完毕删除NSLog。</li>
+<li>推荐编写单元测试。</li>
+<li>对于自己编写的模块方法推荐使用断言避免第三者的非法调用。(正式代码中应当去掉所有断言。)</li>
+<li>对于程序发生的异常现象要从根源解决，而不是通过某种手段掩盖。(比如一个按钮点两次会crash，那么不能让它只点击一次来掩盖)。</li>
+<li>实例属性如<em><em>usernameTextField</em></em>尽量加上<a href="https://my.oschina.net/property" target="_blank" rel="noopener">@property</a>，并且操作使用 <em>self.XXX</em> 操作属性。在操作过程中方便在存取器getter和setter中设置断点调试。(初始化方法中除外，使用<code>-initXXX()</code>调用_XXX属性)。</li>
+</ul>
+<hr>
+<p>本文参照了华为编码规范。欲了解苹果推荐编码规范，请参考<a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CodingGuidelines/Articles/NamingMethods.html#//apple_ref/doc/uid/20001282-1001865" target="_blank" rel="noopener">苹果官方文档</a>。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://dacian.tk/2018/02/14/iOS代码编码规范/" data-id="cjdn2i9up00014lks8j7da804" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/14/hello-world/" class="article-date">
+  <time datetime="2018-02-14T12:21:56.000Z" itemprop="datePublished">2018-02-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/02/14/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://dacian.tk/2018/02/14/hello-world/" data-id="cjdn2i9ui00004lks0cd35hn1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/02/14/iOS代码编码规范/">iOS代码编码规范</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/14/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
